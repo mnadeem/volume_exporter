@@ -2,9 +2,11 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 
+	humanize "github.com/dustin/go-humanize"
 	"github.com/mnadeem/volume_exporter/disk"
 	_ "github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -16,10 +18,16 @@ var (
 )
 
 func main() {
-	di, err := disk.GetInfo("")
+	di := disk.GetInfo("c:\\")
 	if err != nil {
 		return err
 	}
+	percentage := (float64(di.Total-di.Free) / float64(di.Total)) * 100
+	fmt.Printf("%s of %s disk space used (%0.2f%%)\n",
+		humanize.Bytes(di.Total-di.Free),
+		humanize.Bytes(di.Total),
+		percentage,
+	)
 	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 }
 
