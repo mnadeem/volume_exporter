@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	listenAddress = flag.String("web.listen-address", ":9533", "Address to listen on for web interface.")
+	listenAddress = flag.String("web.listen-address", ":9888", "Address to listen on for web interface.")
 	metricPath    = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics.")
 )
 
