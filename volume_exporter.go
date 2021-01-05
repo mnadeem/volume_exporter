@@ -15,11 +15,30 @@ import (
 var (
 	listenAddress = flag.String("web.listen-address", ":9888", "Address to listen on for web interface.")
 	metricPath    = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics.")
+	volumeDirs    volumeDirsFlag
 )
+
+type volumeDirsFlag []string
+
+func (v *volumeDirsFlag) Set(value string) error {
+	*v = append(*v, value)
+	return nil
+}
+
+func (v *volumeDirsFlag) String() string {
+	return fmt.Sprint(*v)
+}
 
 func main() {
 
 	log.Println("Starting volume_exporter")
+
+	flag.Var(&volumeDirs, "volume-dir", "the config map volume directory to watch for updates; may be used multiple times")
+	flag.Parse()
+
+	for _, d := range volumeDirs {
+		log.Printf("Watching directory: %q", d)
+	}
 
 	di, err := disk.GetInfo("c:\\")
 	if err != nil {
