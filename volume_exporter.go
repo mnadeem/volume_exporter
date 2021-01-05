@@ -18,9 +18,9 @@ var (
 )
 
 func main() {
-	di := disk.GetInfo("c:\\")
+	di, err := disk.GetInfo("c:\\")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 	percentage := (float64(di.Total-di.Free) / float64(di.Total)) * 100
 	fmt.Printf("%s of %s disk space used (%0.2f%%)\n",
