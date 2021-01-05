@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/mnadeem/volume_exporter/disk"
 	_ "github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
@@ -15,6 +16,10 @@ var (
 )
 
 func main() {
+	di, err := disk.GetInfo("")
+	if err != nil {
+		return err
+	}
 	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 }
 

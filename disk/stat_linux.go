@@ -1,5 +1,4 @@
 // +build linux,!s390x,!arm,!386
-
 package disk
 
 import (
