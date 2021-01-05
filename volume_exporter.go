@@ -18,6 +18,10 @@ var (
 )
 
 func main() {
+
+	log.Println("Starting volume_exporter")
+	log.Printf("Starting Server: %s", *listenAddress)
+
 	di, err := disk.GetInfo("c:\\")
 	if err != nil {
 		log.Fatal(err)
@@ -28,6 +32,7 @@ func main() {
 		humanize.Bytes(di.Total),
 		percentage,
 	)
+
 	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 }
 
