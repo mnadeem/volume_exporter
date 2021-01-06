@@ -31,6 +31,7 @@ type volumeCollector struct {
 	volumeBytesTotal *prometheus.Desc
 	volumeBytesFree  *prometheus.Desc
 	volumeBytesUsed  *prometheus.Desc
+	volumePrcntUsed  *prometheus.Desc
 
 	volOptions VolumeOpts
 }
@@ -51,6 +52,11 @@ func newVolumeCollector(opts *VolumeOpts) *volumeCollector {
 			"Used size of volume/disk",
 			[]string{"name", "path"}, nil,
 		),
+		volumePrcntUsed: prometheus.NewDesc(prometheus.BuildFQName(namespace, "", "percentage_used"),
+			"Percentage of volume/disk Utilization",
+			[]string{"name", "path"}, nil,
+		),
+
 		volOptions: *opts,
 	}
 }
@@ -63,6 +69,7 @@ func (collector *volumeCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- collector.volumeBytesTotal
 	ch <- collector.volumeBytesFree
 	ch <- collector.volumeBytesUsed
+	ch <- collector.volumePrcntUsed
 }
 
 //Collect implements required collect function for all promehteus collectors
@@ -77,14 +84,14 @@ func (collector *volumeCollector) Collect(ch chan<- prometheus.Metric) {
 			log.Fatal(err)
 		}
 
-		//percentage := (float64(di.Total-di.Free) / float64(di.Total)) * 100
-		//fmt.Printf("%d of %d disk space used (%0.2f%%)\n", di.Total-di.Free, di.Total, percentage)
+		percentage := (float64(di.Used) / float64(di.Total)) * 100
 
 		//Write latest value for each metric in the prometheus metric channel.
 		//Note that you can pass CounterValue, GaugeValue, or UntypedValue types here.
 		ch <- prometheus.MustNewConstMetric(collector.volumeBytesTotal, prometheus.GaugeValue, float64(di.Total), opt.Name, opt.Path)
 		ch <- prometheus.MustNewConstMetric(collector.volumeBytesFree, prometheus.GaugeValue, float64(di.Free), opt.Name, opt.Path)
 		ch <- prometheus.MustNewConstMetric(collector.volumeBytesUsed, prometheus.GaugeValue, float64(di.Used), opt.Name, opt.Path)
+		ch <- prometheus.MustNewConstMetric(collector.volumePrcntUsed, prometheus.GaugeValue, percentage, opt.Name, opt.Path)
 	}
 }
 
