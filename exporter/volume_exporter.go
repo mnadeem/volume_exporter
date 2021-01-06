@@ -94,4 +94,5 @@ func Register(options *VolumeOpts) {
 	collector := newVolumeCollector(options)
 	prometheus.MustRegister(collector)
 	prometheus.MustRegister(version.NewCollector("volume_exporter"))
+	prometheus.Unregister(prometheus.NewGoCollector())
 }

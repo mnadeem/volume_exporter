@@ -118,7 +118,7 @@ func serverMetrics(listenAddress, metricsPath string) error {
 			<html>
 			<head><title>Volume Exporter Metrics</title></head>
 			<body>
-			<h1>ConfigMap Reload</h1>
+			<h1>Volume Exporter Metrics</h1>
 			<p><a href='` + metricsPath + `'>Metrics</a></p>
 			</body>
 			</html>
