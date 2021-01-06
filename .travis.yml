@@ -1,0 +1,29 @@
+sudo: required
+
+matrix:
+  include:
+    - language: go
+      go: 
+        - 1.15
+
+    - language: bash
+      services:
+        - docker
+      before_script:
+        - docker --version
+      script:
+        - go get github.com/prometheus/client_golang/prometheus
+        - go get github.com/prometheus/client_golang/prometheus/promhttp
+        - go get github.com/prometheus/common/log
+        - go get github.com/prometheus/common/version
+        - go build main.go
+        - docker build -t mnadeem/volume_exporter .
+      after_success:
+        - if [ "$TRAVIS_BRANCH" == "master" ]; then
+          docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+          docker push mnadeem/volume_exporter;
+          fi
+
+notifications:
+  email:
+    - "$EMAIL"

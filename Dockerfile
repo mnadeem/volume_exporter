@@ -1,7 +1,6 @@
-FROM        quay.io/prometheus/busybox:latest
+FROM        golang:1.15-alpine
 LABEL maintainer="Mohammad Nadeem<coolmind182006@gmail.com>"
 
-COPY volume_exporter /bin/volume_exporter
+COPY ./main /bin/volume_exporter
 
-EXPOSE     9888
 ENTRYPOINT [ "/bin/volume_exporter" ]
