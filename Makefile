@@ -62,6 +62,12 @@ docker:
 	@echo ">> building docker image"
 	@docker build -t "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" .
 
+push:
+	@echo ">> pushing docker image, $(DOCKER_USERNAME),$(DOCKER_IMAGE_NAME),$(TAG)"
+	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
+	@docker tag "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
+	@docker push "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
+
 promu:
 	@GOOS=$(shell uname -s | tr A-Z a-z) \
 	        GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
@@ -77,5 +83,4 @@ $(GOPATH)/bin/gometalinter lint:
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) get -u github.com/alecthomas/gometalinter
 
-.PHONY: all style format build test vet tarball docker promu $(GOPATH)/bin/gometalinter lint
-© 2021 GitHub, Inc.
+.PHONY: all style format build test vet tarball docker promu $(GOPATH)/bin/gometalinter lint © 2021 GitHub, Inc.
