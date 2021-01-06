@@ -16,3 +16,9 @@ before_script:
 
 script:
   - make
+
+after_success:
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  make docker;
+  make push;
+  fi
