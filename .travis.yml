@@ -12,7 +12,7 @@ matrix:
       before_script:
         - docker --version
       script:
-        - go build main.go
+        - go build -ldflags '-d -s -w' -a -tags netgo -installsuffix netgo main.go
         - docker build -t mnadeem/volume_exporter .
       after_success:
         - if [ "$TRAVIS_BRANCH" == "master" ]; then
