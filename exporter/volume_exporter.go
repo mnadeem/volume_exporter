@@ -1,8 +1,7 @@
 package exporter
 
 import (
-	"fmt"
-	"log"
+	"github.com/prometheus/common/log"
 
 	"github.com/mnadeem/volume_exporter/disk"
 	"github.com/prometheus/client_golang/prometheus"
@@ -78,8 +77,8 @@ func (collector *volumeCollector) Collect(ch chan<- prometheus.Metric) {
 			log.Fatal(err)
 		}
 
-		percentage := (float64(di.Total-di.Free) / float64(di.Total)) * 100
-		fmt.Printf("%d of %d disk space used (%0.2f%%)\n", di.Total-di.Free, di.Total, percentage)
+		//percentage := (float64(di.Total-di.Free) / float64(di.Total)) * 100
+		//fmt.Printf("%d of %d disk space used (%0.2f%%)\n", di.Total-di.Free, di.Total, percentage)
 
 		//Write latest value for each metric in the prometheus metric channel.
 		//Note that you can pass CounterValue, GaugeValue, or UntypedValue types here.
