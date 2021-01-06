@@ -76,7 +76,7 @@ func splitFlag(s string) (string, string) {
 	slice := strings.SplitN(s, ":", 2)
 
 	if len(slice) == 1 {
-		log.Fatalf("Invalid option %", s)
+		log.Fatalf("Invalid option %s", s)
 		os.Exit(1)
 	}
 	name := strings.TrimSpace(slice[0])
