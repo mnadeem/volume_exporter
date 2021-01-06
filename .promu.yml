@@ -3,18 +3,7 @@ go:
 repository:
     path: github.com/mnadeem/volume_exporter
 build:
-    flags: -a -tags netgo
-    ldflags: |
-        -s
-        -X {{repoPath}}/vendor/github.com/prometheus/common/version.Version={{.Version}}
-        -X {{repoPath}}/vendor/github.com/prometheus/common/version.Revision={{.Revision}}
-        -X {{repoPath}}/vendor/github.com/prometheus/common/version.Branch={{.Branch}}
-        -X {{repoPath}}/vendor/github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
-        -X {{repoPath}}/vendor/github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
-tarball:
-    files:
-        - README.md
-crossbuild:
-    platforms:
-        - linux/amd64
-        - windows/amd64
+    prefix: .
+    binaries:
+        - name: volume_exporter
+          path: .

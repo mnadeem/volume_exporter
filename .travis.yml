@@ -8,17 +8,11 @@ language: go
 go:
 - 1.12
 
-script:
-  - make style
-  - make vet
-  - make gometalinter
-  - make build
+go_import_path: github.com/mnadeem/volume_exporter
 
-after_success:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  make docker;
-  make push;
-  fi
-- if [[ -n "$TRAVIS_TAG" ]]; then
-  make crossbuild release;
-  fi
+before_script:
+  - docker --version
+  - make init
+
+script:
+  - make
