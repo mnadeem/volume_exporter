@@ -12,10 +12,6 @@ matrix:
       before_script:
         - docker --version
       script:
-        - go get github.com/prometheus/client_golang/prometheus
-        - go get github.com/prometheus/client_golang/prometheus/promhttp
-        - go get github.com/prometheus/common/log
-        - go get github.com/prometheus/common/version
         - go build main.go
         - docker build -t mnadeem/volume_exporter .
       after_success:
