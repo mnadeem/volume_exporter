@@ -6,7 +6,13 @@ services:
 language: go
 
 go:
-- 1.9
+- 1.12
+
+script:
+  - make style
+  - make vet
+  - make gometalinter
+  - make build
 
 after_success:
 - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
