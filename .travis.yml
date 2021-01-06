@@ -4,7 +4,7 @@ matrix:
   include:
     - language: go
       go: 
-        - 1.15
+        - 1.12
 
     - language: bash
       services:
