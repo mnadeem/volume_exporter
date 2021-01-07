@@ -13,7 +13,7 @@ Useful to monitor disk/volume/PV storage, for various reasons
 * [In ability](https://bugzilla.redhat.com/show_bug.cgi?id=1373288) of Cloud provider to gather information about PV
 
 
-This is what happens in cooperates, In nodes multiple projects run on same and/or different nodes, and hence host path mount cannot be granted, further node scapping cannont be done as well, since it requires cluster role, as in a cluster multiple projects/namespace runs, and hence cluster role is not granted to project teams.
+This is what happens in corporates, multiple projects run on same and/or different nodes, and hence host path mount cannot be granted, further node scrapping cannot be done as well, since it requires cluster role, as in a cluster multiple projects/namespace runs, and hence cluster role is not granted to project teams.
 
 Above I have listed some of the use cases ( real world ) where in node exporter cannot be deployed, should this stop us from monitoring pv/volumes/disk?
 
