@@ -115,6 +115,14 @@ volume_percentage_used{volume_name="bin",volume_path="/bin"} 32.07688208958619
 volume_percentage_used{volume_name="etc",volume_path="/etc"} 32.07688208958619
 ```
 
+## Why Volume Exporter
+
+* Because there are cases where in you dont have permission to mounth host path
+* Beacause there are cases where you dont have access to nodes.
+* Very light weight (just 6.84 MB of image size)
+* Configurable, you can pass multiple volumes to track.
+
+
 ## Support
 If you need help using volume_exporter feel free to drop an email or [create an issue](https://github.com/mnadeem/volume_exporter/issues/new)  (**preferred**)
 
