@@ -15,7 +15,7 @@ style:
 	@! gofmt -d $(shell find . -path ./vendor -prune -o -name '*.go' -print) | grep '^'
 
 test:
-	@echo ">> running tests" $(pkgs)
+	@echo ">> running tests"
 	@$(GO) test -short $(pkgs)
 
 format:
