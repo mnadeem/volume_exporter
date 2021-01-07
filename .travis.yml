@@ -7,7 +7,6 @@ dist: trusty         # or bionic | xenial | trusty | precise with xenial as defa
 arch: amd64          # optional, this is default, routes to a full VM
 os:
   - linux
-  - windows
 
 services:
 - docker
