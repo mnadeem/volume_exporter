@@ -11,23 +11,28 @@ TAG 					:= $(shell echo `if [ "$(TRAVIS_BRANCH)" = "master" ] || [ "$(TRAVIS_BR
 all: build test
 
 init:
-	go get -u github.com/prometheus/promu
-	go get -u github.com/prometheus/client_golang/prometheus
-	go get -u github.com/prometheus/common/version
-	go get -u github.com/prometheus/common/log
-	go get -u github.com/prometheus/client_golang/prometheus/promhttp
+    @echo ">> Running init"
+	@$(GO) get -u github.com/prometheus/promu
+	@$(GO) get -u github.com/prometheus/client_golang/prometheus
+	@$(GO) get -u github.com/prometheus/common/version
+	@$(GO) get -u github.com/prometheus/common/log
+	@$(GO) get -u github.com/prometheus/client_golang/prometheus/promhttp
 
 build:
-	go install -v
-	promu build
+    @echo ">> building binaries"
+	@$(GO) go install -v
+	@$(PROMU) build --prefix $(PREFIX)
 
-docker:	
-	docker build -t "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" .
+docker:
+    @echo ">> building docker image"
+	@docker build -t "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" .
 
 push:	
-	docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
-	docker tag "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
-	docker push "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
+	@echo ">> pushing docker image, $(DOCKER_USERNAME),$(DOCKER_IMAGE_NAME),$(TAG)"
+	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
+	@docker tag "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
+	@docker push "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(TAG)"
 
 test:
-	go test -v -race
+	@echo ">> running tests"
+	@$(GO) test -short $(pkgs)
