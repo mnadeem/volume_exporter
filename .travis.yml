@@ -31,5 +31,5 @@ after_success:
   make push;
   fi
 - if [[ -n "$TRAVIS_TAG" ]]; then
-  make release;
+  make crossbuild release;
   fi
