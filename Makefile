@@ -18,7 +18,7 @@ init:
 	@$(GO) get -u github.com/prometheus/client_golang/prometheus/promhttp
 
 build: 
-	@$(GO) go install -v
+	@$(GO) install -v
 	@$(PROMU) build --prefix $(PREFIX)
 
 docker: 
