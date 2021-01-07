@@ -27,8 +27,8 @@ docker run  -p 9889:9888 -it mnadeem/volume_exporter --volume-dir=bin:/bin
 ### Deploy It in Cloud
 Add as a sidecar
 
-```bash 
-- name: volume-exporter
+```yaml 
+        - name: volume-exporter
           image:  mnadeem/volume_exporter
           imagePullPolicy: "Always"
           args:
