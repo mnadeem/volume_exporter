@@ -5,4 +5,4 @@ COPY ./volume_exporter /bin/volume_exporter
 
 ENTRYPOINT [ "/bin/volume_exporter" ]
 CMD        [ "--volume-dir=bin:/bin", \
-             "-web.listen-address=:9888" ]
+             "--web.listen-address=:9888" ]
