@@ -30,3 +30,6 @@ after_success:
   make docker;
   make push;
   fi
+- if [[ -n "$TRAVIS_TAG" ]]; then
+  make release;
+  fi

@@ -12,6 +12,15 @@ Useful to monitor disk/volume/PV storage, for various reasons
 * Host path cannot to be mounted to container/Deamonset
 * [In ability](https://bugzilla.redhat.com/show_bug.cgi?id=1373288) of Cloud provider to gather information about PV
 
+
+This is what happens in cooperates, In nodes multiple projects run on same and/or different nodes, and hence host path mount cannot be granted, further node scapping cannont be done as well, since it requires cluster role, as in a cluster multiple projects/namespace runs, and hence cluster role is not granted to project teams.
+
+Above I have listed some of the use cases ( real world ) where in node exporter cannot be deployed, should this stop us from monitoring pv/volumes/disk?
+
+**This is altogether a different exporter and does not duplicate any existing exporters. Its area of focus (Where ever node exporter cannot be deployed) is altogether different.**
+
+**It just fills the vacuum**
+
 ## Wiki
 
 Refer project [wiki](https://github.com/mnadeem/volume_exporter/wiki) for more details
