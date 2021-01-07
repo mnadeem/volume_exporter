@@ -1,5 +1,14 @@
 sudo: required
 
+# https://docs.travis-ci.com/user/reference/overview/
+# https://docs.travis-ci.com/user/multi-os/
+
+dist: trusty         # or bionic | xenial | trusty | precise with xenial as default
+arch: amd64          # optional, this is default, routes to a full VM
+os:
+  - linux
+  - windows
+
 services:
 - docker
 
