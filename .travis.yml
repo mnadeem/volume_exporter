@@ -20,7 +20,6 @@ go_import_path: github.com/mnadeem/volume_exporter
 
 before_script:
   - docker --version
-  - make init
 
 script:
   - make
