@@ -117,9 +117,10 @@ volume_percentage_used{volume_name="etc",volume_path="/etc"} 32.07688208958619
 
 ## Why Volume Exporter
 
-* Because there are cases where in you dont have permission to mounth host path
+* Because there are cases where in you dont have permission to mount host path
 * Beacause there are cases where you dont have access to nodes.
 * Very light weight (just 6.84 MB of image size)
+* Conumes very less CPU and Memory and can be added as sidecar.
 * Configurable, you can pass multiple volumes to track.
 
 
