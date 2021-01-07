@@ -14,15 +14,30 @@ Useful to monitor disk/volume/PV storage, for various reasons
 
 ## Wiki
 
-Refer project [wiki](https://github.com/mnadeem/volume_exporter/wiki) for momre details
+Refer project [wiki](https://github.com/mnadeem/volume_exporter/wiki) for more details
 
 ## Running
 
 ### Command Line locally
 
+
 ```bash 
 go run main.go --volume-dir=practices:E:\practices
 ```
+
+#### Usage
+
+```
+Usage of Temp\go-build869878202\b001\exe\main.exe:
+  -volume-dir value
+        Volumes to report, the format is volumeName:VolumeDir;
+         For example ==> logs:/app/logs; can be used multiple times to provide more than one value
+  -web.listen-address string
+        Address to listen on for web interface and telemetry. (default ":9888")
+  -web.telemetry-path string
+        Path under which to expose metrics. (default "/metrics")
+```
+
 ### Docker Locally
 
 ```bash 
@@ -46,10 +61,28 @@ Add as a sidecar
             readOnly: true
 ```
 
+## Config
+
+|Flag |	Description|
+| ------------------- | -------------------------- | 
+| web.listen-address |	Address to listen on for web interface and telemetry. Default is 9888|
+| web.telemetry-path |	Path under which to expose metrics. Default is /metrics|
+| volume-dir	 | volumes to report, the format is volumeName:VolumeDir, For example ==> logs:/app/logs, you can use this flag multiple times to provide multiple volumes|
+
+
 ## Exporterd Metrics
 
-Here is a sample metrics exporterd by running  `docker run --rm -p 9888:9888  -it docker.repo1.uhc.com/mnadeem/volume_exporter:latest  -volume-dir=bin:/bin -volume-dir=etc:/etc`
+| metrics	| Type |	Description |
+| ------------------- | ----------- |  -------------------------- |
+| volume_bytes_total{volume_name=”someName”, volume_path=”/some/path”} |	Gauge	| Total size of the volume/disk | 
+| volume_bytes_free{volume_name=”someName”, volume_path=”/some/path”}	| Gauge	| Free size of the volume/disk | 
+| volume_bytes_used{volume_name=”someName”, volume_path=”/some/path”} |	Gauge |	Used size of volume/disk | 
 
+Here is a sample metrics exporterd by running  
+
+```bash
+docker run --rm -p 9888:9888  -it docker.repo1.uhc.com/mnadeem/volume_exporter:latest  -volume-dir=bin:/bin -volume-dir=etc:/etc
+```
 
 ```
 # HELP volume_bytes_free Free size of the volume/disk
@@ -72,6 +105,18 @@ volume_exporter_build_info{branch="",goversion="go1.12",revision="",version=""} 
 volume_percentage_used{name="bin",path="/bin"} 32.056106956689746
 volume_percentage_used{name="etc",path="/etc"} 32.056106956689746
 ```
+
+## Support
+If you need help using volume_exporter feel free to drop an email or [create an issue](https://github.com/mnadeem/volume_exporter/issues/new)  (**preferred**)
+
+## Contributions
+To help Dexecutor development you are encouraged to  
+* Provide suggestion/feedback/Issue
+* pull requests for new features
+* Star :star2: the project
+
+
+[![View My profile on LinkedIn](https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x33.png)](https://in.linkedin.com/pub/nadeem-mohammad/17/411/21)
 
 ## Inspired From
 
