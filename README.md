@@ -64,7 +64,7 @@ Add as a sidecar
 ## Config
 
 |Flag |	Description|
-| ------------------- | -------------------------- | 
+| ---------------------------- | -------------------------------------------- | 
 | web.listen-address |	Address to listen on for web interface and telemetry. Default is 9888|
 | web.telemetry-path |	Path under which to expose metrics. Default is /metrics|
 | volume-dir	 | volumes to report, the format is volumeName:VolumeDir, For example ==> logs:/app/logs, you can use this flag multiple times to provide multiple volumes|
@@ -73,7 +73,7 @@ Add as a sidecar
 ## Exporterd Metrics
 
 | metrics	| Type |	Description |
-| ------------------- | ----------- |  -------------------------- |
+| --------------------------------------------------------- | ----------- |  ------------------------------------- |
 | volume_bytes_total{volume_name=”someName”, volume_path=”/some/path”} |	Gauge	| Total size of the volume/disk | 
 | volume_bytes_free{volume_name=”someName”, volume_path=”/some/path”}	| Gauge	| Free size of the volume/disk | 
 | volume_bytes_used{volume_name=”someName”, volume_path=”/some/path”} |	Gauge |	Used size of volume/disk | 
