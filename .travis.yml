@@ -6,7 +6,7 @@ services:
 language: go
 
 go:
-- 1.12
+- 1.15
 
 go_import_path: github.com/mnadeem/volume_exporter
 
