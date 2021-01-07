@@ -119,7 +119,7 @@ volume_percentage_used{name="etc",path="/etc"} 32.056106956689746
 If you need help using volume_exporter feel free to drop an email or [create an issue](https://github.com/mnadeem/volume_exporter/issues/new)  (**preferred**)
 
 ## Contributions
-To help Dexecutor development you are encouraged to  
+To help development you are encouraged to  
 * Provide suggestion/feedback/Issue
 * pull requests for new features
 * Star :star2: the project
