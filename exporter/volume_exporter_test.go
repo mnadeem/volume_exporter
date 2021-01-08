@@ -26,7 +26,6 @@ func TestDesc(t *testing.T) {
 		if m == nil {
 			t.Error("expected metric but got nil")
 		}
-		t.Logf("%s", m.String())
 	}
 	extraMetrics := 0
 	for <-desc != nil {
