@@ -50,7 +50,7 @@ Usage of Temp\go-build869878202\b001\exe\main.exe:
 ### Docker Locally
 
 ```bash 
-docker run --rm -p 9889:9888 -it mnadeem/volume_exporter --volume-dir=bin:/bin
+docker run --rm -p 9888:9888 -it mnadeem/volume_exporter --volume-dir=bin:/bin
 ```
 ### Deploy It in Cloud
 Add as a sidecar
