@@ -6,6 +6,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/mnadeem/volume_exporter.svg)](https://hub.docker.com/r/mnadeem/volume_exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mnadeem/volume_exporter)](https://goreportcard.com/report/github.com/mnadeem/volume_exporter)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e76b18154ec458359e01/maintainability)](https://codeclimate.com/github/mnadeem/volume_exporter/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e76b18154ec458359e01/test_coverage)](https://codeclimate.com/github/mnadeem/volume_exporter/test_coverage)
 
 Useful to monitor disk/volume/PV storage, for various reasons
 
