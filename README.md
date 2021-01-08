@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/mnadeem/volume_exporter.svg?branch=master)](https://travis-ci.com/mnadeem/volume_exporter)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Language](https://img.shields.io/badge/language-Go-red.svg)]
+[![Language](https://img.shields.io/badge/language-Go-red.svg)](https://travis-ci.com/mnadeem/volume_exporter)
 [![Docker](https://img.shields.io/badge/docker-master-brightgreen.svg)](https://hub.docker.com/repository/docker/mnadeem/volume_exporter) 
 [![Docker Pulls](https://img.shields.io/docker/pulls/mnadeem/volume_exporter.svg)](https://hub.docker.com/r/mnadeem/volume_exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mnadeem/volume_exporter)](https://goreportcard.com/report/github.com/mnadeem/volume_exporter)
