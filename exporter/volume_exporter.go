@@ -98,7 +98,7 @@ func (collector *volumeCollector) Collect(ch chan<- prometheus.Metric) {
 // Register registers the volume metrics
 func Register(options *VolumeOpts) {
 	collector := newVolumeCollector(options)
-	prometheus.MustRegister(collector)
 	prometheus.MustRegister(version.NewCollector("volume_exporter"))
+	prometheus.MustRegister(collector)
 	prometheus.Unregister(prometheus.NewGoCollector())
 }
