@@ -92,7 +92,7 @@ Add as a sidecar
 Here is a sample metrics exporterd by running  
 
 ```bash
-docker run --rm -p 9888:9888  -it docker.repo1.uhc.com/mnadeem/volume_exporter:latest  -volume-dir=bin:/bin -volume-dir=etc:/etc
+docker run --rm -p 9888:9888  -it mnadeem/volume_exporter:latest  -volume-dir=bin:/bin -volume-dir=etc:/etc
 ```
 
 ```
