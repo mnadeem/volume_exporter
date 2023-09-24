@@ -3,10 +3,10 @@ FROM busybox
 LABEL maintainer="Mohammad Nadeem<coolmind182006@gmail.com>"
 
 RUN adduser -D vExporter
-COPY ./volume_exporter.* /bin/volume_exporter
+COPY ./volume_exporter.* /bin
 
-RUN chown -R vExporter:0 /bin/volume_exporter && \
-    chmod -R ug+rwx /bin/volume_exporter
+RUN chown -R vExporter:0 /bin && \
+    chmod -R ug+rwx /bin
 
 USER vExporter
 
