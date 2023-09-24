@@ -6,10 +6,9 @@ import (
 	"net/http"
 	"os"
 	"strings"
-
+	"log"
 	"github.com/mnadeem/volume_exporter/exporter"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/prometheus/common/log"
 	"github.com/prometheus/common/version"
 )
 
@@ -37,14 +36,14 @@ func main() {
 		volFlags = volumeFlags{}
 	)
 
-	log.Infoln("Starting volume_exporter")
+	log.Println("Starting volume_exporter")
 
 	flag.Var(&volFlags.volumeNamePath, "volume-dir", "Volumes to report, the format is volumeName:VolumeDir;\n For example ==> logs:/app/logs; can be used multiple times to provide more than one value")
 	flag.Parse()
 
 	if len(volFlags.volumeNamePath) < 1 {
-		log.Infoln("Missing volume-dir")
-		log.Infoln()
+		log.Println("Missing volume-dir")
+		log.Println()
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -53,14 +52,14 @@ func main() {
 
 	for _, np := range volFlags.volumeNamePath {
 		name, path := splitFlag(np)
-		log.Infof("Directory Name : %s, Path : %s", name, path)
+		log.Printf("Directory Name : %s, Path : %s", name, path)
 		volOpts.Options = append(volOpts.Options, exporter.VolumeOpt{Name: name, Path: path})
 	}
 
 	exporter.Register(&volOpts)
 
-	log.Infoln("Starting volume_exporter", version.Info())
-	log.Infoln("Build context", version.BuildContext())
+	log.Println("Starting volume_exporter", version.Info())
+	log.Println("Build context", version.BuildContext())
 
 	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 }
@@ -125,6 +124,6 @@ func serverMetrics(listenAddress, metricsPath string) error {
 		`))
 	})
 
-	log.Infof("Starting Server: %s", listenAddress)
+	log.Printf("Starting Server: %s", listenAddress)
 	return http.ListenAndServe(listenAddress, nil)
 }
