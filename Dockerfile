@@ -2,8 +2,8 @@ FROM busybox
 
 LABEL maintainer="Mohammad Nadeem<coolmind182006@gmail.com>"
 
-RUN adduser -D vExporter
-COPY --chown=vExporter ./volume_exporter.* /bin/volume_exporter
+#RUN adduser -D vExporter
+COPY ./volume_exporter.* /bin/volume_exporter
 
 USER vExporter
 
