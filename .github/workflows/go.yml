@@ -54,4 +54,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/volume_exporter:v0.2.0
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/volume_exporter:latest
