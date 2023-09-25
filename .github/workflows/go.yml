@@ -26,6 +26,11 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - name: Display Go version
       run: go version
+    - name: setup env
+      run: |
+        echo "::set-env name=GOPATH::$(go env GOPATH)"
+        echo "::add-path::$(go env GOPATH)/bin"
+      shell: bash
     - name: Install dependencies
       run: |
         go get .
@@ -34,7 +39,7 @@ jobs:
         go get golang.org/x/sys@v0.12.0
         go get -u github.com/prometheus/promu
     - name: Build
-      run: s $GOBIN/promu build --prefix .
+      run: promu build --prefix .
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
